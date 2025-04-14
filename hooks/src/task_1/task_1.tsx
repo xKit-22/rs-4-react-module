@@ -1,4 +1,5 @@
-import { useFetch } from './useFetch';
+import {useFetch} from './useFetch';
+import {IResponseData, IUser} from "./interfaces.ts";
 
 export default function Task_1() {
     const {
@@ -6,8 +7,9 @@ export default function Task_1() {
         isLoading,
         error,
         refetch
-    } = useFetch('https://dummyjson.com/users');
+    } = useFetch<IResponseData>('https://dummyjson.com/users');
 
+    console.log(data)
     return (
         <div>
             <div>
@@ -21,7 +23,8 @@ export default function Task_1() {
             </div>
             {isLoading && 'Загрузка...'}
             {error && `Произошла ошибка: ${error}`}
-            {data && !isLoading && data.map(item => <div key={item.id}>{`${item.firstName} ${item.lastName}`}</div>) }
+            {data && !isLoading && data.users?.map((item: IUser) => <div
+                key={item.id}>{`${item.firstName} ${item.lastName}`}</div>)}
         </div>
     );
 }

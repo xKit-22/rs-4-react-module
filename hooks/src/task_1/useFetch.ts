@@ -1,35 +1,34 @@
 import {useEffect, useState} from "react";
 
 
-export function useFetch(url: string) {
+export function useFetch<T>(url: string) {
     const [isLoading, setIsLoading] = useState(false)
-    const [error, setError] = useState("")
-    const [data, setData] = useState([])
+    const [error, setError] = useState<Error | null>(null)
+    const [data, setData] = useState<T | null>(null)
 
-    const fetchUsers = async () => {
+    const fetchData = async (options?: {params: { _limit: number }}) => {
+        const _limit: number | undefined = options?.params._limit
         try {
             setIsLoading(true)
-            const response = await fetch(url)
+            setError(null)
+            const response = await fetch(`${url}${_limit ? `?limit=${_limit}` : ''}`)
             const data = await response.json()
             setIsLoading(false)
-            setData(data.users)
+            setData(data)
         } catch (er) {
             setIsLoading(false)
-            setError(er)
+            setError(er as Error)
+        } finally {
+            setIsLoading(false)
         }
     }
 
     useEffect(() => {
-        fetchUsers()
+        fetchData()
     }, [url])
 
-    const refetch = (params: {params: { _limit: number }}) => {
-        for (let i = 0; i < params.params._limit; i++) {
-            fetchUsers()
-            if (!error) {
-                break;
-            }
-        }
+    const refetch = (options: {params: { _limit: number }}) => {
+        fetchData(options)
     }
 
 
