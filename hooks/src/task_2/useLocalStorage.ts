@@ -7,18 +7,22 @@ export type UseLocalStorage = [
     value: LocalStorageReturnValue,
     {
         setItem: (value: LocalStorageSetValue) => void;
-        removeItem: (key: string) => void;
+        removeItem: () => void;
     },
 ];
 
 export function useLocalStorage (key: string): UseLocalStorage {
-    const [value, setValue] = useState(JSON.parse( localStorage.getItem(key)|| "[]"))
+    const [value, setValue] = useState(() => JSON.parse( localStorage.getItem(key) || "null"))
+
+    const addItem = (key: string) => {
+        localStorage.setItem(key, JSON.stringify(value))
+    }
 
     useEffect(() => {
-        localStorage.setItem(key, JSON.stringify(value))
+        addItem(key)
     }, [value])
 
-    const removeItem = (key: string) => {
+    const removeItem = () => {
         setValue(null)
         localStorage.removeItem(key)
     }

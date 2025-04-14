@@ -8,7 +8,7 @@ export default function Task_2() {
             <p>Значение из LocalStorage: {value}</p>
             <div>
                 <button onClick={() => setItem('111')}>Задать значение</button>
-                <button onClick={() => removeItem('ls_key')}>Удалить значение</button>
+                <button onClick={removeItem}>Удалить значение</button>
             </div>
         </div>
     );
