@@ -1,10 +1,10 @@
 import './App.css'
-import Task_1 from "./task_1/task_1.tsx";
+import Task_2 from "./task_2/task_2.tsx";
 
 function App() {
   return (
     <>
-      <Task_1/>
+      <Task_2/>
     </>
   )
 }
