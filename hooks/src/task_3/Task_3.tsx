@@ -1,7 +1,7 @@
 import { useHover } from './useHover';
 
 export default function Task_3() {
-    const { hovered, ref } = useHover();
+    const { hovered, ref } = useHover<HTMLDivElement>();
 
     return (
         <div ref={ref}>
