@@ -1,14 +1,19 @@
-import {useState} from "react";
+import {useState, useCallback, useEffect} from "react";
 import {useWindowEvent} from "./useWindowEvent.ts";
 
 export function useViewportSize() {
-    const [height, setHeight] = useState(document.documentElement.clientHeight)
-    const [width, setWidth] = useState(document.documentElement.clientWidth)
+    const [height, setHeight] = useState(0)
+    const [width, setWidth] = useState(0)
 
-    const handleResize = () => {
+    useEffect(() => {
         setHeight(document.documentElement.clientHeight)
         setWidth(document.documentElement.clientWidth)
-    }
+    }, [])
+
+    const handleResize = useCallback(() => {
+        setHeight(document.documentElement.clientHeight)
+        setWidth(document.documentElement.clientWidth)
+    }, [])
 
     useWindowEvent('resize', handleResize, null)
 
