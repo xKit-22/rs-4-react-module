@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useCallback} from "react";
 import {useWindowEvent} from "./useWindowEvent.ts";
 
 export function useWindowScroll() {
@@ -7,9 +7,9 @@ export function useWindowScroll() {
         window.scrollTo(coordinates.x || 0, coordinates.y || 0);
     }
 
-    const handleScroll = () => {
+    const handleScroll = useCallback(() => {
         setScroll({x: window.scrollX, y: window.scrollY})
-    }
+    }, [])
 
     useWindowEvent('scroll', handleScroll, null)
 
