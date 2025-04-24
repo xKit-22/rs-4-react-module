@@ -1,0 +1,12 @@
+.error_text {
+    color: red;
+}
+
+.error_input {
+    border-color: red;
+}
+
+.asterisk::after {
+    content: " *";
+    color: red;
+}
