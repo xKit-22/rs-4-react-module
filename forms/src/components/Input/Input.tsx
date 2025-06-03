@@ -12,6 +12,7 @@ interface IInputProps {
     withAsterisk?: boolean
     radius?: "xs" | "sm" | "md" | "lg" | "xl"
     size?: "xs" | "sm" | "md" | "lg" | "xl"
+    variant?: "default" | "filled" | "unstyled"
 }
 
 export function Input({
@@ -26,6 +27,7 @@ export function Input({
                           withAsterisk = false,
                           radius = "sm",
                           size = "sm",
+                          variant = "default",
                       }: IInputProps) {
 
     const asteriskStyle = withAsterisk ? "asterisk" : ""
