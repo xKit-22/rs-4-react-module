@@ -1,0 +1,16 @@
+.container {
+  height: 100vh;
+  background-image: url("../../assets/404.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  gap: 350px;
+  align-items: end;
+}
+
+.container p {
+  margin: 0;
+  font-size: 450px;
+  color: #39d62d;
+}
+
