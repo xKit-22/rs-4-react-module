@@ -6,8 +6,8 @@ export default function Header() {
     return (
         <div className={css.links}>
             <div><Link to={"/characters"}>Персонажи</Link></div>
-            <div><Link to={"/episodes"}>Локации</Link></div>
-            <div><Link to={"/locations"}>Эпизоды</Link></div>
+            <div><Link to={"/locations"}>Локации</Link></div>
+            <div><Link to={"/episodes"}>Эпизоды</Link></div>
         </div>
     )
 }
