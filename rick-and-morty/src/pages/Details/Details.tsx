@@ -3,11 +3,11 @@ import {useParams} from "react-router-dom";
 import css from './details.module.scss'
 
 export default function Details({data}: { data: IData[] }) {
-    const {id} = useParams()
+    const {id} = useParams<{id: string}>()
     return (
         <div className={css.container}>
             <div>
-                {Object.entries(data.find((el => el.id === +!id)) ?? {}).map(([key, value]) => {
+                {Object.entries(data.find((el => el.id === Number(id))) ?? {}).map(([key, value]) => {
                     if (key === "image") {
                         return <img key={key} src={String(value)} alt={'img'}/>;
                     } else if (key === "created") {
