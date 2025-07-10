@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import css from './list.module.scss'
-import {IData} from "../../interfaces.ts";
+import {IData} from "../../types/interfaces.ts";
 
 export default function List({data}: {data: IData[]}) {
     return (
