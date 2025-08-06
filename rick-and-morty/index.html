@@ -5,9 +5,14 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#7ba7b2">
+    <link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+    <link rel="apple-mobile-web-app-status-bar" content="#7ba7b2">
   </head>
   <body>
     <div id="root"></div>
+    <script src="/src/service-worker/app.js"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
